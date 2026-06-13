@@ -1,32 +1,20 @@
+import { useLang } from '../i18n/LanguageContext';
+
 const steps = [
-  {
-    num: '1',
-    title: 'റിപ്പോർട്ട് തയ്യാറാക്കുക',
-    desc: 'പരാതിയും അനുബന്ധ തെളിവുകളും ശേഖരിക്കുക.',
-  },
-  {
-    num: '2',
-    title: 'ഓൺലൈനായി സമർപ്പിക്കുക',
-    desc: 'ഔദ്യോഗിക പോർട്ടൽ വഴി പരാതി അപ്‌ലോഡ് ചെയ്യുക.',
-  },
-  {
-    num: '3',
-    title: 'പരിശോധന',
-    desc: 'സമിതിയുടെ നിയമ വിദഗ്ദ്ധർ പരാതി പരിശോധിക്കുന്നു.',
-  },
-  {
-    num: '4',
-    title: 'നടപടി',
-    desc: 'നിയമപരമായ നടപടികളോ ഒത്തുതീർപ്പോ നടക്കുന്നു.',
-  },
+  { num: '1', titleKey: 'filing.step1Title', descKey: 'filing.step1Desc' },
+  { num: '2', titleKey: 'filing.step2Title', descKey: 'filing.step2Desc' },
+  { num: '3', titleKey: 'filing.step3Title', descKey: 'filing.step3Desc' },
+  { num: '4', titleKey: 'filing.step4Title', descKey: 'filing.step4Desc' },
 ];
 
 export default function FilingGuide() {
+  const { t } = useLang();
+
   return (
     <section className="py-16 bg-primary text-on-primary">
       <div className="max-w-container-max mx-auto px-10">
         <h2 className="font-headline text-3xl mb-12 text-center">
-          പരാതി സമർപ്പിക്കുന്നതിനുള്ള ഘട്ടങ്ങൾ
+          {t('filing.heading')}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
@@ -38,8 +26,8 @@ export default function FilingGuide() {
               <div className="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl shadow-lg">
                 {step.num}
               </div>
-              <h5 className="font-bold mb-2">{step.title}</h5>
-              <p className="text-sm opacity-80">{step.desc}</p>
+              <h5 className="font-bold mb-2">{t(step.titleKey)}</h5>
+              <p className="text-sm opacity-80">{t(step.descKey)}</p>
             </div>
           ))}
         </div>

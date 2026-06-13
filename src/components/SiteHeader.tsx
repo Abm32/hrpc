@@ -1,17 +1,21 @@
 import { Search, Menu } from 'lucide-react';
 
+import { useLang } from '../i18n/LanguageContext';
+
 const EMBLEM_URL =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuBvwXH6qkqXVsIR6xE9be2mWZZ8frY4v1I_-qxdHWaXaLkr_WLWflF_QyjmRd57gSjPTPhAZR89nli0rBWVvS4hJN2E89qJ7RmptzgAVcUBEvP7ReT0g1Rg9RsPuviFO54zGLZMqIoqXChsVqF7grTVY0tuyakuUUMt6VpQY0jJ3MyZDobkiRNY8VsRVJ1-LjF67ECHPOt2YdnEIDuiVXP_FI41_prPl4ztCgoB6miGxcc-lg42qOzaiTyBidBpG37V6A27Fu0dJXg5';
 
-const navLinks = [
-  { label: 'ഹോം', active: true },
-  { label: 'ഞങ്ങളെക്കുറിച്ച്', active: false },
-  { label: 'പ്രവർത്തനങ്ങൾ', active: false },
-  { label: 'സേവനങ്ങൾ', active: false },
-  { label: 'ബന്ധപ്പെടുക', active: false },
-];
-
 export default function SiteHeader() {
+  const { t, lang, toggleLang } = useLang();
+
+  const navLinks = [
+    { label: t('nav.home'), active: true },
+    { label: t('nav.about'), active: false },
+    { label: t('nav.activities'), active: false },
+    { label: t('nav.services'), active: false },
+    { label: t('nav.contact'), active: false },
+  ];
+
   return (
     <header className="sticky top-0 w-full z-50 bg-white gov-shadow border-b border-outline-variant">
       <div className="max-w-container-max mx-auto px-10 flex justify-between items-center h-24">
@@ -23,13 +27,13 @@ export default function SiteHeader() {
           />
           <div className="flex flex-col border-l border-outline-variant pl-4">
             <span className="font-headline text-xl font-bold text-primary leading-tight">
-              കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി
+              {t('header.orgName')}
             </span>
             <span className="text-sm font-semibold text-secondary tracking-wider uppercase">
               HRPS KERALA
             </span>
             <span className="text-[10px] text-gray-400 italic">
-              Reg. No. Q. 966/2001 | Estd. 1995
+              {t('header.regLine')}
             </span>
           </div>
         </div>
@@ -49,16 +53,23 @@ export default function SiteHeader() {
             </a>
           ))}
           <div className="flex gap-2 items-center ml-4">
-            <button className="bg-primary text-on-primary px-4 py-1.5 rounded text-sm font-semibold hover:opacity-90 transition-opacity">
-              English
+            <button
+              onClick={toggleLang}
+              aria-label={lang === 'ml' ? 'Switch to English' : 'മലയാളത്തിലേക്ക് മാറുക'}
+              className="bg-primary text-on-primary px-4 py-1.5 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              {lang === 'ml' ? t('header.toggleToEn') : t('header.toggleToMl')}
             </button>
-            <button className="p-2 hover:bg-surface-container rounded-full transition-colors text-primary">
+            <button
+              aria-label={t('header.search')}
+              className="p-2 hover:bg-surface-container rounded-full transition-colors text-primary"
+            >
               <Search size={20} />
             </button>
           </div>
         </nav>
 
-        <button className="lg:hidden text-primary">
+        <button className="lg:hidden text-primary" aria-label="Menu">
           <Menu size={30} />
         </button>
       </div>

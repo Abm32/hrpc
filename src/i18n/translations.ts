@@ -46,8 +46,8 @@ export const translations = {
   hero: {
     breadcrumbCurrent: { ml: 'മുഖ്യ വാർത്തകൾ', en: 'Highlights' },
     heading: {
-      ml: 'മനുഷ്യാവകാശ സംരക്ഷണത്തിനും പരിസ്ഥിതി പരിരക്ഷയ്ക്കുമായി ഒരു ഔദ്യോഗിക വേദി.',
-      en: 'An official forum for the protection of human rights and the environment.',
+      ml: 'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി — അവകാശ സംരക്ഷണത്തിന്റെ ഔദ്യോഗിക വേദി.',
+      en: 'Kerala Human Rights Protection Society — the official forum for protecting your rights.',
     },
     subheading: {
       ml: 'കേരളത്തിലെ സാധാരണക്കാരുടെ അവകാശങ്ങൾ സംരക്ഷിക്കുന്നതിനും പരിസ്ഥിതി സംരക്ഷണ പ്രവർത്തനങ്ങൾ ഏകോപിപ്പിക്കുന്നതിനും 1995 മുതൽ പ്രവർത്തിച്ചുവരുന്ന സമിതി.',

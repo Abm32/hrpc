@@ -10,20 +10,24 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
+import { useLang } from '../i18n/LanguageContext';
+
 const EVENT_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuB2PuhRRhXeEZqPllJdrWUTCPeJAHLCxo3NOA08dVL2CWmarr7Jlu4TfYdkWHVbylr_MzljjXnoFgwlu5p1X1ReZ8TftXe13bDm45a9cXNfJnw9hKtTNNrVfH0qq4ph3kPb4DX563m4DecTM1SsFBWZIWnsQRtbHxmHvdgJsohTxrzbVnJNTM-V1N5a8G9ExHrOQrDYqwkl7wFG2emGAbUpmqd68Lml4t_aOcaGpd3mNd2ytr0gzDoU_mYObapfKFiPSZAJEj_-pdeZ';
 
 export default function NewsSection() {
+  const { t } = useLang();
+
   return (
     <section className="py-16 bg-surface-container/30">
       <div className="max-w-container-max mx-auto px-10">
         <div className="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-outline-variant pb-4">
           <h2 className="font-headline text-3xl text-primary flex items-center gap-3">
             <LayoutGrid size={26} className="text-secondary" />
-            വാർത്തകളും പ്രവർത്തനങ്ങളും
+            {t('news.heading')}
           </h2>
           <a href="#" className="text-primary font-bold hover:underline mt-4 md:mt-0">
-            എല്ലാ റിപ്പോർട്ടുകളും കാണുക →
+            {t('news.viewAll')}
           </a>
         </div>
 
@@ -38,7 +42,7 @@ export default function NewsSection() {
             <div className="p-8 flex flex-col flex-1">
               <div className="flex items-center gap-2 mb-4">
                 <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
-                  വാർത്ത
+                  {t('news.badge')}
                 </span>
                 <span className="text-sm text-gray-400 flex items-center gap-1">
                   <Calendar size={14} /> ജൂൺ 5, 2024
@@ -57,7 +61,7 @@ export default function NewsSection() {
                 href="#"
                 className="inline-flex items-center gap-1 text-primary font-bold hover:gap-2 transition-all"
               >
-                പൂർണ്ണരൂപം വായിക്കാം <ArrowRight size={18} />
+                {t('news.readFull')} <ArrowRight size={18} />
               </a>
             </div>
           </div>
@@ -67,7 +71,7 @@ export default function NewsSection() {
             {/* Upcoming Events */}
             <div className="bg-white p-6 rounded border-l-4 border-primary gov-shadow border border-outline-variant">
               <h4 className="font-bold text-primary mb-3 flex items-center gap-2">
-                <CalendarDays size={16} /> വരാനിരിക്കുന്ന പരിപാടികൾ
+                <CalendarDays size={16} /> {t('news.upcomingEvents')}
               </h4>
               <div className="space-y-4">
                 <div className="group cursor-pointer">
@@ -92,10 +96,10 @@ export default function NewsSection() {
             {/* Emergency Helpline */}
             <div className="bg-primary text-on-primary p-6 rounded gov-shadow">
               <h4 className="font-bold mb-2 flex items-center gap-2 text-lg">
-                <AlertCircle size={22} /> എമർജൻസി ഹെൽപ്പ് ലൈൻ
+                <AlertCircle size={22} /> {t('news.helplineTitle')}
               </h4>
               <p className="text-sm opacity-90 mb-4">
-                അടിയന്തര മനുഷ്യാവകാശ ലംഘനങ്ങൾ റിപ്പോർട്ട് ചെയ്യാൻ വിളിക്കുക.
+                {t('news.helplineDesc')}
               </p>
               <div className="text-2xl font-bold font-headline flex items-center gap-2">
                 <Phone size={22} /> +91 9526775936
@@ -104,21 +108,21 @@ export default function NewsSection() {
 
             {/* Quick Links */}
             <div className="bg-surface p-6 rounded border border-outline-variant border-dashed">
-              <h4 className="font-bold text-on-surface mb-4">ദ്രുത ലിങ്കുകൾ</h4>
+              <h4 className="font-bold text-on-surface mb-4">{t('news.quickLinks')}</h4>
               <ul className="space-y-3">
                 <li>
                   <a href="#" className="text-sm flex items-center gap-2 hover:text-primary transition-colors">
-                    <FileText size={15} /> വിവരാവകാശ നിയമം
+                    <FileText size={15} /> {t('news.rtiAct')}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-sm flex items-center gap-2 hover:text-primary transition-colors">
-                    <Download size={15} /> അപേക്ഷാ ഫോറങ്ങൾ
+                    <Download size={15} /> {t('news.appForms')}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-sm flex items-center gap-2 hover:text-primary transition-colors">
-                    <MapPin size={15} /> ഓഫീസുകൾ
+                    <MapPin size={15} /> {t('news.offices')}
                   </a>
                 </li>
               </ul>

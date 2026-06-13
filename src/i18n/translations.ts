@@ -67,6 +67,7 @@ export const translations = {
     viewAll: { ml: 'എല്ലാ റിപ്പോർട്ടുകളും കാണുക →', en: 'View all reports →' },
     badge: { ml: 'വാർത്ത', en: 'News' },
     readFull: { ml: 'പൂർണ്ണരൂപം വായിക്കാം', en: 'Read full report' },
+    showLess: { ml: 'ചുരുക്കുക', en: 'Show less' },
     upcomingEvents: { ml: 'വരാനിരിക്കുന്ന പരിപാടികൾ', en: 'Upcoming Events' },
     helplineTitle: { ml: 'എമർജൻസി ഹെൽപ്പ് ലൈൻ', en: 'Emergency Helpline' },
     helplineDesc: {

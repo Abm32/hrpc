@@ -111,16 +111,16 @@ export default function NewsSection() {
                 <CalendarDays size={16} /> {t('news.upcomingEvents')}
               </h4>
               <div className="space-y-4">
-                <div className="group cursor-pointer">
-                  <p className="font-semibold text-sm group-hover:text-primary transition-colors">
+                <div className="border-l-2 border-primary/30 pl-3">
+                  <p className="font-semibold text-sm">
                     സൗജന്യ നിയമ സഹായ ക്യാമ്പ് - കൊല്ലം
                   </p>
                   <p className="text-[12px] text-gray-400 mt-1">
                     ജൂലൈ 15, രാവിലെ 10 മണി മുതൽ
                   </p>
                 </div>
-                <div className="group cursor-pointer">
-                  <p className="font-semibold text-sm group-hover:text-primary transition-colors">
+                <div className="border-l-2 border-primary/30 pl-3">
+                  <p className="font-semibold text-sm">
                     പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം
                   </p>
                   <p className="text-[12px] text-gray-400 mt-1">

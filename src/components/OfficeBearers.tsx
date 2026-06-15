@@ -2,10 +2,10 @@ import { Phone } from 'lucide-react';
 
 import { useLang } from '../i18n/LanguageContext';
 
-import drAyathilAnsar from '../assets/members/dr_ayathil_ansar.png';
-import bPradeep from '../assets/members/b_pradeep.png';
-import drVinodLal from '../assets/members/dr_vinod_lal.png';
-import johnVarghese from '../assets/members/john_varghese_puthenpura.png';
+import drAyathilAnsar from '../assets/members/dr_ayathil_ansar.jpg';
+import bPradeep from '../assets/members/b_pradeep.jpg';
+import drVinodLal from '../assets/members/dr_vinod_lal.jpg';
+import johnVarghese from '../assets/members/john_varghese_puthenpura.jpg';
 
 interface Member {
   name: string;
@@ -24,7 +24,7 @@ const stateMembers: Member[] = [
 
 // District committee — photos served from public/ (referenced by root path).
 const districtMembers: Member[] = [
-  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.png' },
+  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
   { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
   {
     name: 'ഷീല ഹരിദാസ്',
@@ -35,21 +35,21 @@ const districtMembers: Member[] = [
   {
     name: 'പ്രതീഷ് എസ്. ശശിധരൻ',
     role: 'കൊല്ലം ജില്ലാ പ്രസിഡന്റ്',
-    img: '/pratheesh_s_sasidharan.png',
+    img: '/pratheesh_s_sasidharan.jpg',
     phone: '9847711333',
   },
   {
     name: 'പി. കെ. സുജിത്ത്',
     role: 'ആലപ്പുഴ ജില്ലാ പ്രസിഡന്റ്',
-    img: '/P_K_SUJITH.png',
+    img: '/P_K_SUJITH.jpg',
     phone: '9995542506',
   },
   {
     name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
     role: 'കൊല്ലം ജില്ലാ സെക്രട്ടറി',
-    img: '/Alexander_Sebastian.png',
+    img: '/Alexander_Sebastian.jpg',
   },
-  { name: 'കൊല്ലം സുകു', role: 'കൊല്ലം', img: '/kollam_suku.png', phone: '9526775936' },
+  { name: 'കൊല്ലം സുകു', role: 'കൊല്ലം', img: '/kollam_suku.jpg', phone: '9526775936' },
 ];
 
 function MemberCard({ member }: { member: Member }) {

@@ -13,20 +13,20 @@ export default function ServicesSection() {
   const { t } = useLang();
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-container-max mx-auto px-10">
-        <div className="text-center mb-12">
-          <h2 className="font-headline text-3xl text-primary mb-4">{t('services.heading')}</h2>
+    <section className="py-10 sm:py-14 lg:py-16 bg-white">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="font-headline text-2xl sm:text-3xl text-primary mb-4">{t('services.heading')}</h2>
           <div className="w-16 h-1 bg-secondary mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.titleKey}
-                className="p-8 bg-surface-container/20 rounded border border-outline-variant hover:border-primary hover:bg-white transition-all text-center group cursor-pointer"
+                className="p-6 sm:p-8 bg-surface-container/20 rounded border border-outline-variant hover:border-primary hover:bg-white transition-all text-center group cursor-pointer"
               >
                 <Icon
                   size={40}

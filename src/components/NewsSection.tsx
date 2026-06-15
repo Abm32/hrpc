@@ -33,28 +33,28 @@ export default function NewsSection() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="py-16 bg-surface-container/30">
-      <div className="max-w-container-max mx-auto px-10">
-        <div className="flex flex-col md:flex-row justify-between items-baseline mb-10 border-b border-outline-variant pb-4">
-          <h2 className="font-headline text-3xl text-primary flex items-center gap-3">
-            <LayoutGrid size={26} className="text-secondary" />
+    <section className="py-10 sm:py-14 lg:py-16 bg-surface-container/30">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-baseline mb-8 sm:mb-10 border-b border-outline-variant pb-4">
+          <h2 className="font-headline text-2xl sm:text-3xl text-primary flex items-center gap-3">
+            <LayoutGrid size={26} className="text-secondary shrink-0" />
             {t('news.heading')}
           </h2>
-          <a href="#" className="text-primary font-bold hover:underline mt-4 md:mt-0">
+          <a href="#" className="text-primary font-bold hover:underline mt-3 md:mt-0">
             {t('news.viewAll')}
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Main Feature Article */}
           <div className="lg:col-span-2 bg-white rounded gov-shadow overflow-hidden border border-outline-variant flex flex-col">
             <img
               src={bloodCamp1}
               alt="ലോക രക്തദാന ദിന ക്യാമ്പ്"
-              className="w-full h-64 object-cover"
+              className="w-full h-48 sm:h-64 object-cover"
             />
-            <div className="p-8 flex flex-col flex-1">
-              <div className="flex items-center gap-2 mb-4">
+            <div className="p-5 sm:p-8 flex flex-col flex-1">
+              <div className="flex items-center flex-wrap gap-2 mb-4">
                 <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
                   {t('news.badge')}
                 </span>
@@ -62,7 +62,7 @@ export default function NewsSection() {
                   <Calendar size={14} /> ജൂൺ 14, 2025
                 </span>
               </div>
-              <h3 className="font-headline text-2xl text-primary mb-4">
+              <h3 className="font-headline text-xl sm:text-2xl text-primary mb-4 leading-snug">
                 🩸 ലോക രക്തദാന ദിനാചരണത്തിന്റെ ഭാഗമായി വിപുലമായ രക്തദാന ക്യാമ്പ്;
                 നിരവധി പേർ ജീവൻദാനത്തിന് കൈകോർത്തു 🩸
               </h3>
@@ -138,8 +138,8 @@ export default function NewsSection() {
               <p className="text-sm opacity-90 mb-4">
                 {t('news.helplineDesc')}
               </p>
-              <div className="text-2xl font-bold font-headline flex items-center gap-2">
-                <Phone size={22} /> +91 9526775936
+              <div className="text-xl sm:text-2xl font-bold font-headline flex items-center gap-2 flex-wrap">
+                <Phone size={22} className="shrink-0" /> +91 9526775936
               </div>
             </div>
 

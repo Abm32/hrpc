@@ -27,10 +27,10 @@ function AppContent() {
       <SiteFooter />
 
       {/* Floating Action Button */}
-      <div className="fixed bottom-8 right-8 z-40">
-        <button className="bg-secondary text-on-secondary px-6 py-3 rounded-full flex items-center gap-2 shadow-2xl hover:scale-105 active:scale-95 transition-all font-bold">
-          <Megaphone size={18} />
-          <span className="text-sm">{t('fab.fileComplaint')}</span>
+      <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-40">
+        <button className="bg-secondary text-on-secondary px-4 py-3 sm:px-6 rounded-full flex items-center gap-2 shadow-2xl hover:scale-105 active:scale-95 transition-all font-bold">
+          <Megaphone size={18} className="shrink-0" />
+          <span className="text-xs sm:text-sm">{t('fab.fileComplaint')}</span>
         </button>
       </div>
     </div>

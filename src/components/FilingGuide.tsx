@@ -11,19 +11,19 @@ export default function FilingGuide() {
   const { t } = useLang();
 
   return (
-    <section className="py-16 bg-primary text-on-primary">
-      <div className="max-w-container-max mx-auto px-10">
-        <h2 className="font-headline text-3xl mb-12 text-center">
+    <section className="py-10 sm:py-14 lg:py-16 bg-primary text-on-primary">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10">
+        <h2 className="font-headline text-2xl sm:text-3xl mb-8 sm:mb-12 text-center">
           {t('filing.heading')}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
           {/* Connector line */}
           <div className="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 bg-white/20" />
 
           {steps.map((step) => (
             <div key={step.num} className="text-center relative z-10">
-              <div className="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl shadow-lg">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white text-primary rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg sm:text-xl shadow-lg">
                 {step.num}
               </div>
               <h5 className="font-bold mb-2">{t(step.titleKey)}</h5>

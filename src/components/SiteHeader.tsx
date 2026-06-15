@@ -1,12 +1,12 @@
-import { Search, Menu } from 'lucide-react';
+import { Search, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 import { useLang } from '../i18n/LanguageContext';
-
-const EMBLEM_URL =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBvwXH6qkqXVsIR6xE9be2mWZZ8frY4v1I_-qxdHWaXaLkr_WLWflF_QyjmRd57gSjPTPhAZR89nli0rBWVvS4hJN2E89qJ7RmptzgAVcUBEvP7ReT0g1Rg9RsPuviFO54zGLZMqIoqXChsVqF7grTVY0tuyakuUUMt6VpQY0jJ3MyZDobkiRNY8VsRVJ1-LjF67ECHPOt2YdnEIDuiVXP_FI41_prPl4ztCgoB6miGxcc-lg42qOzaiTyBidBpG37V6A27Fu0dJXg5';
+import hrpcLogo from '../assets/hrpc_logo.png';
 
 export default function SiteHeader() {
   const { t, lang, toggleLang } = useLang();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { label: t('nav.home'), active: true },
@@ -18,27 +18,28 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 w-full z-50 bg-white gov-shadow border-b border-outline-variant">
-      <div className="max-w-container-max mx-auto px-10 flex justify-between items-center h-24">
-        <div className="flex items-center gap-4">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10 flex justify-between items-center gap-3 min-h-[4.5rem] lg:min-h-24 py-2.5 lg:py-3">
+        <div className="flex items-center gap-2.5 sm:gap-3 lg:gap-4 min-w-0">
           <img
-            src={EMBLEM_URL}
-            alt="Kerala State Emblem"
-            className="h-16 w-auto object-contain"
+            src={hrpcLogo}
+            alt="Human Rights Protection Council of Kerala logo"
+            className="h-11 sm:h-14 lg:h-16 w-auto object-contain shrink-0"
           />
-          <div className="flex flex-col border-l border-outline-variant pl-4">
-            <span className="font-headline text-xl font-bold text-primary leading-tight">
+          <div className="flex flex-col border-l border-outline-variant pl-2.5 sm:pl-3 lg:pl-4 min-w-0">
+            <span className="font-headline text-sm sm:text-base lg:text-xl font-bold text-primary leading-tight">
               {t('header.orgName')}
             </span>
-            <span className="text-sm font-semibold text-secondary tracking-wider uppercase">
+            <span className="text-[11px] sm:text-xs lg:text-sm font-semibold text-secondary tracking-wider uppercase">
               HRPS KERALA
             </span>
-            <span className="text-[10px] text-gray-400 italic">
+            <span className="text-[9px] sm:text-[10px] text-gray-400 italic leading-tight">
               {t('header.regLine')}
             </span>
           </div>
         </div>
 
-        <nav className="hidden lg:flex gap-6 items-center">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex gap-6 items-center shrink-0">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -69,10 +70,59 @@ export default function SiteHeader() {
           </div>
         </nav>
 
-        <button className="lg:hidden text-primary" aria-label="Menu">
-          <Menu size={30} />
+        {/* Mobile menu toggle */}
+        <button
+          className="lg:hidden text-primary shrink-0 p-1"
+          aria-label={menuOpen ? t('header.closeMenu') : t('header.openMenu')}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+
+      {/* Mobile menu panel */}
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          className="lg:hidden border-t border-outline-variant bg-white px-4 sm:px-6 py-3"
+        >
+          <ul className="flex flex-col">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href="#"
+                  onClick={() => setMenuOpen(false)}
+                  className={
+                    link.active
+                      ? 'block py-3 border-b border-outline-variant text-primary font-bold'
+                      : 'block py-3 border-b border-outline-variant text-on-surface font-medium hover:text-primary transition-colors'
+                  }
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-3 mt-4">
+            <button
+              onClick={toggleLang}
+              aria-label={lang === 'ml' ? 'Switch to English' : 'മലയാളത്തിലേക്ക് മാറുക'}
+              className="flex-1 bg-primary text-on-primary px-4 py-2.5 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              {lang === 'ml' ? t('header.toggleToEn') : t('header.toggleToMl')}
+            </button>
+            <button
+              aria-label={t('header.search')}
+              className="p-2.5 border border-outline-variant rounded-full transition-colors text-primary hover:bg-surface-container"
+            >
+              <Search size={20} />
+            </button>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

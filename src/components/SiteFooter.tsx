@@ -1,9 +1,7 @@
 import { Facebook, AtSign, Phone } from 'lucide-react';
 
 import { useLang } from '../i18n/LanguageContext';
-
-const EMBLEM_URL =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuBvwXH6qkqXVsIR6xE9be2mWZZ8frY4v1I_-qxdHWaXaLkr_WLWflF_QyjmRd57gSjPTPhAZR89nli0rBWVvS4hJN2E89qJ7RmptzgAVcUBEvP7ReT0g1Rg9RsPuviFO54zGLZMqIoqXChsVqF7grTVY0tuyakuUUMt6VpQY0jJ3MyZDobkiRNY8VsRVJ1-LjF67ECHPOt2YdnEIDuiVXP_FI41_prPl4ztCgoB6miGxcc-lg42qOzaiTyBidBpG37V6A27Fu0dJXg5';
+import hrpcLogo from '../assets/hrpc_logo.png';
 
 export default function SiteFooter() {
   const { t } = useLang();
@@ -16,15 +14,15 @@ export default function SiteFooter() {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white pt-16 pb-8 border-t-4 border-secondary">
-      <div className="max-w-container-max mx-auto px-10 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="bg-slate-900 text-white pt-12 sm:pt-16 pb-8 border-t-4 border-secondary">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-6">
             <img
-              src={EMBLEM_URL}
-              alt="Kerala State Emblem"
-              className="h-12 w-auto brightness-0 invert"
+              src={hrpcLogo}
+              alt="Human Rights Protection Council of Kerala logo"
+              className="h-12 w-auto object-contain bg-white rounded-full p-0.5"
             />
             <span className="font-headline text-xl font-bold leading-tight">HRPS KERALA</span>
           </div>
@@ -86,7 +84,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="max-w-container-max mx-auto px-10 mt-16 pt-8 border-t border-white/10 text-center">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10 mt-12 sm:mt-16 pt-8 border-t border-white/10 text-center">
         <p className="text-[11px] text-gray-500">
           {t('footer.copyright')}
         </p>

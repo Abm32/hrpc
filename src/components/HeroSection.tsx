@@ -9,28 +9,28 @@ export default function HeroSection() {
   const { t } = useLang();
 
   return (
-    <section id="main" className="relative py-16 bg-white overflow-hidden border-b border-outline-variant">
-      <div className="max-w-container-max mx-auto px-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+    <section id="main" className="relative py-10 sm:py-14 lg:py-16 bg-white overflow-hidden border-b border-outline-variant">
+      <div className="max-w-container-max mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
         <div className="lg:col-span-7">
-          <nav aria-label="Breadcrumb" className="flex mb-6 text-sm text-gray-400 gap-2 items-center">
+          <nav aria-label="Breadcrumb" className="flex mb-5 sm:mb-6 text-sm text-gray-400 gap-2 items-center">
             <a href="#" className="hover:text-primary transition-colors">{t('nav.home')}</a>
             <ChevronRight size={14} />
             <span className="text-primary font-semibold">{t('hero.breadcrumbCurrent')}</span>
           </nav>
 
-          <h1 className="font-headline text-4xl lg:text-5xl text-primary mb-6 leading-[1.2]">
+          <h1 className="font-headline text-2xl sm:text-3xl lg:text-5xl text-primary mb-4 sm:mb-6 leading-[1.25] lg:leading-[1.2]">
             {t('hero.heading')}
           </h1>
 
-          <p className="text-lg text-gray-500 mb-8 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-500 mb-6 sm:mb-8 max-w-2xl leading-relaxed">
             {t('hero.subheading')}
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-primary text-on-primary px-8 py-3.5 rounded font-bold shadow-md hover:opacity-95 flex items-center gap-2 transition-opacity">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <button className="bg-primary text-on-primary px-6 sm:px-8 py-3 sm:py-3.5 rounded font-bold shadow-md hover:opacity-95 flex items-center justify-center gap-2 transition-opacity">
               <FileText size={18} /> {t('hero.fileComplaint')}
             </button>
-            <button className="border border-primary text-primary px-8 py-3.5 rounded font-bold hover:bg-primary/5 transition-colors">
+            <button className="border border-primary text-primary px-6 sm:px-8 py-3 sm:py-3.5 rounded font-bold hover:bg-primary/5 transition-colors">
               {t('hero.learnMore')}
             </button>
           </div>
@@ -41,10 +41,10 @@ export default function HeroSection() {
             <img
               src={HERO_IMAGE}
               alt="Justice Scales"
-              className="w-full h-[400px] object-cover"
+              className="w-full h-56 sm:h-80 lg:h-[400px] object-cover"
             />
-            <div className="absolute bottom-0 w-full bg-black/60 backdrop-blur-sm p-4 text-white">
-              <p className="font-headline italic text-lg text-center leading-snug">
+            <div className="absolute bottom-0 w-full bg-black/60 backdrop-blur-sm p-3 sm:p-4 text-white">
+              <p className="font-headline italic text-base sm:text-lg text-center leading-snug">
                 {t('hero.imageQuote')}
               </p>
               <p className="text-xs text-right mt-2 opacity-80">{t('hero.imageCaption')}</p>

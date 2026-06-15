@@ -30,6 +30,8 @@ export const translations = {
     },
     regLine: { ml: 'Reg. No. Q. 966/2001 | Estd. 1995', en: 'Reg. No. Q. 966/2001 | Estd. 1995' },
     search: { ml: 'തിരയുക', en: 'Search' },
+    openMenu: { ml: 'മെനു തുറക്കുക', en: 'Open menu' },
+    closeMenu: { ml: 'മെനു അടയ്ക്കുക', en: 'Close menu' },
     // Label shown ON the toggle button = the language you switch TO.
     toggleToEn: { ml: 'English', en: 'English' },
     toggleToMl: { ml: 'മലയാളം', en: 'മലയാളം' },

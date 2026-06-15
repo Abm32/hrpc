@@ -12,6 +12,8 @@ interface Member {
   role: string;
   img: string;
   phone?: string;
+  /** Tailwind object-position class to keep the face centred (default: object-top). */
+  objectPosition?: string;
 }
 
 // State committee — photos imported from src/assets/members.
@@ -55,11 +57,14 @@ const districtMembers: Member[] = [
 function MemberCard({ member }: { member: Member }) {
   return (
     <div className="w-[calc(50%-0.5rem)] sm:w-64 bg-white p-4 rounded gov-shadow text-center border border-outline-variant hover:border-primary transition-colors">
-      <img
-        src={member.img}
-        alt={member.name}
-        className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover border-2 border-primary-container p-1"
-      />
+      <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 overflow-hidden ring-2 ring-primary-container bg-surface-container">
+        <img
+          src={member.img}
+          alt={member.name}
+          loading="lazy"
+          className={`w-full h-full object-cover ${member.objectPosition ?? 'object-top'}`}
+        />
+      </div>
       <h4 className="font-bold text-base sm:text-lg text-primary">{member.name}</h4>
       <p className="text-xs text-secondary font-bold uppercase tracking-tight mt-1">
         {member.role}

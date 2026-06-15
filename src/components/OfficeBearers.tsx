@@ -21,7 +21,7 @@ const stateMembers: Member[] = [
   { name: 'ഡോ. ആയത്തിൽ അൻസാർ', role: 'സംസ്ഥാന പ്രസിഡന്റ്', img: drAyathilAnsar },
   { name: 'ബി. പ്രദീപ്', role: 'സംസ്ഥാന സെക്രട്ടറി', img: bPradeep },
   { name: 'ഡോ. വിനോദ് ലാൽ', role: 'സംസ്ഥാന രക്ഷാധികാരി', img: drVinodLal },
-  { name: 'ജോൺ വർഗ്ഗീസ്', role: 'കോശാധ്യക്ഷൻ', img: johnVarghese },
+  { name: 'ജോൺ വർഗ്ഗീസ്', role: 'സംസ്ഥാന ട്രഷറർ', img: johnVarghese },
 ];
 
 // District committee — photos served from public/ (referenced by root path).

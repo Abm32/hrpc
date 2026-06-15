@@ -1,3 +1,5 @@
+import { Phone } from 'lucide-react';
+
 import { useLang } from '../i18n/LanguageContext';
 
 import drAyathilAnsar from '../assets/members/dr_ayathil_ansar.png';
@@ -5,28 +7,74 @@ import bPradeep from '../assets/members/b_pradeep.png';
 import drVinodLal from '../assets/members/dr_vinod_lal.png';
 import johnVarghese from '../assets/members/john_varghese_puthenpura.png';
 
-const members = [
-  {
-    name: 'ഡോ. ആയത്തിൽ അൻസാർ',
-    role: 'സംസ്ഥാന പ്രസിഡന്റ്',
-    img: drAyathilAnsar,
-  },
-  {
-    name: 'ബി. പ്രദീപ്',
-    role: 'സംസ്ഥാന സെക്രട്ടറി',
-    img: bPradeep,
-  },
-  {
-    name: 'ഡോ. വിനോദ് ലാൽ',
-    role: 'സംസ്ഥാന രക്ഷാധികാരി',
-    img: drVinodLal,
-  },
-  {
-    name: 'ജോൺ വർഗ്ഗീസ്',
-    role: 'കോശാധ്യക്ഷൻ',
-    img: johnVarghese,
-  },
+interface Member {
+  name: string;
+  role: string;
+  img: string;
+  phone?: string;
+}
+
+// State committee — photos imported from src/assets/members.
+const stateMembers: Member[] = [
+  { name: 'ഡോ. ആയത്തിൽ അൻസാർ', role: 'സംസ്ഥാന പ്രസിഡന്റ്', img: drAyathilAnsar },
+  { name: 'ബി. പ്രദീപ്', role: 'സംസ്ഥാന സെക്രട്ടറി', img: bPradeep },
+  { name: 'ഡോ. വിനോദ് ലാൽ', role: 'സംസ്ഥാന രക്ഷാധികാരി', img: drVinodLal },
+  { name: 'ജോൺ വർഗ്ഗീസ്', role: 'കോശാധ്യക്ഷൻ', img: johnVarghese },
 ];
+
+// District committee — photos served from public/ (referenced by root path).
+const districtMembers: Member[] = [
+  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.png' },
+  { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
+  {
+    name: 'ഷീല ഹരിദാസ്',
+    role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
+    img: '/sheela_haridas.jpg',
+    phone: '8848041003',
+  },
+  {
+    name: 'പ്രതീഷ് എസ്. ശശിധരൻ',
+    role: 'കൊല്ലം ജില്ലാ പ്രസിഡന്റ്',
+    img: '/pratheesh_s_sasidharan.png',
+    phone: '9847711333',
+  },
+  {
+    name: 'പി. കെ. സുജിത്ത്',
+    role: 'ആലപ്പുഴ ജില്ലാ പ്രസിഡന്റ്',
+    img: '/P_K_SUJITH.png',
+    phone: '9995542506',
+  },
+  {
+    name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
+    role: 'കൊല്ലം ജില്ലാ സെക്രട്ടറി',
+    img: '/Alexander_Sebastian.png',
+  },
+  { name: 'കൊല്ലം സുകു', role: 'കൊല്ലം', img: '/kollam_suku.png', phone: '9526775936' },
+];
+
+function MemberCard({ member }: { member: Member }) {
+  return (
+    <div className="w-[calc(50%-0.5rem)] sm:w-64 bg-white p-4 rounded gov-shadow text-center border border-outline-variant hover:border-primary transition-colors">
+      <img
+        src={member.img}
+        alt={member.name}
+        className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover border-2 border-primary-container p-1"
+      />
+      <h4 className="font-bold text-base sm:text-lg text-primary">{member.name}</h4>
+      <p className="text-xs text-secondary font-bold uppercase tracking-tight mt-1">
+        {member.role}
+      </p>
+      {member.phone && (
+        <a
+          href={`tel:+91${member.phone}`}
+          className="mt-2 inline-flex items-center gap-1 text-sm text-primary font-semibold hover:underline"
+        >
+          <Phone size={13} className="shrink-0" /> +91 {member.phone}
+        </a>
+      )}
+    </div>
+  );
+}
 
 export default function OfficeBearers() {
   const { t } = useLang();
@@ -45,21 +93,18 @@ export default function OfficeBearers() {
           {t('members.committeeState')}
         </h3>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-          {members.map((member) => (
-            <div
-              key={member.name}
-              className="w-[calc(50%-0.5rem)] sm:w-64 bg-white p-4 rounded gov-shadow text-center border border-outline-variant hover:border-primary transition-colors"
-            >
-              <img
-                src={member.img}
-                alt={member.name}
-                className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 object-cover border-2 border-primary-container p-1"
-              />
-              <h4 className="font-bold text-base sm:text-lg text-primary">{member.name}</h4>
-              <p className="text-xs text-secondary font-bold uppercase tracking-tight mt-1">
-                {member.role}
-              </p>
-            </div>
+          {stateMembers.map((member) => (
+            <MemberCard key={member.name} member={member} />
+          ))}
+        </div>
+
+        {/* District committee. */}
+        <h3 className="text-center font-headline text-lg sm:text-xl text-secondary font-bold mt-12 sm:mt-16 mb-6 sm:mb-8">
+          {t('members.committeeDistrict')}
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
+          {districtMembers.map((member) => (
+            <MemberCard key={member.name} member={member} />
           ))}
         </div>
       </div>

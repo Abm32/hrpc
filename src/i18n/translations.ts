@@ -113,6 +113,7 @@ export const translations = {
       en: 'Leadership of the State Human Rights Protection Society',
     },
     committeeState: { ml: 'സംസ്ഥാന കമ്മിറ്റി', en: 'State Committee' },
+    committeeDistrict: { ml: 'ജില്ലാ കമ്മിറ്റി', en: 'District Committee' },
   },
 
   filing: {

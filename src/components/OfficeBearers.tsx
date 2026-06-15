@@ -19,7 +19,8 @@ interface Member {
 // State committee — photos imported from src/assets/members.
 const stateMembers: Member[] = [
   { name: 'ഡോ. ആയത്തിൽ അൻസാർ', role: 'സംസ്ഥാന പ്രസിഡന്റ്', img: drAyathilAnsar },
-  { name: 'ബി. പ്രദീപ്', role: 'സംസ്ഥാന സെക്രട്ടറി', img: bPradeep },
+  { name: 'കൊല്ലം സുകു', role: 'സംസ്ഥാന സെക്രട്ടറി', img: '/kollam_suku.jpg', phone: '9526775936' },
+  { name: 'ബി. പ്രദീപ്', role: 'ജനറൽ സെക്രട്ടറി', img: bPradeep },
   { name: 'ഡോ. വിനോദ് ലാൽ', role: 'സംസ്ഥാന രക്ഷാധികാരി', img: drVinodLal },
   { name: 'ജോൺ വർഗ്ഗീസ്', role: 'സംസ്ഥാന ട്രഷറർ', img: johnVarghese },
 ];
@@ -51,7 +52,6 @@ const districtMembers: Member[] = [
     role: 'കൊല്ലം ജില്ലാ സെക്രട്ടറി',
     img: '/Alexander_Sebastian.jpg',
   },
-  { name: 'കൊല്ലം സുകു', role: 'കൊല്ലം', img: '/kollam_suku.jpg', phone: '9526775936' },
 ];
 
 function MemberCard({ member }: { member: Member }) {

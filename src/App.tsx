@@ -5,7 +5,7 @@ import TopBar from './components/TopBar';
 import SiteHeader from './components/SiteHeader';
 import HeroSection from './components/HeroSection';
 import NewsSection from './components/NewsSection';
-import ServicesSection from './components/ServicesSection';
+// import ServicesSection from './components/ServicesSection'; // Hidden for now
 import OfficeBearers from './components/OfficeBearers';
 import FilingGuide from './components/FilingGuide';
 import SiteFooter from './components/SiteFooter';
@@ -20,7 +20,7 @@ function AppContent() {
       <main>
         <HeroSection />
         <NewsSection />
-        <ServicesSection />
+        {/* <ServicesSection /> */}
         <OfficeBearers />
         <FilingGuide />
       </main>

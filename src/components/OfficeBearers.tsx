@@ -10,6 +10,8 @@ import johnVarghese from '../assets/members/john_varghese_puthenpura.jpg';
 interface Member {
   name: string;
   role: string;
+  /** Secondary credential shown on its own line under the role, e.g. a former post. */
+  subRole?: string;
   img: string;
   phone?: string;
   /** Tailwind object-position class to keep the face centred (default: object-top). */
@@ -19,7 +21,7 @@ interface Member {
 // State committee — photos imported from src/assets/members.
 const stateMembers: Member[] = [
   { name: 'ഡോ. ആയത്തിൽ അൻസാർ', role: 'സംസ്ഥാന പ്രസിഡന്റ്', img: drAyathilAnsar },
-  { name: 'ബി. പ്രദീപ്', role: 'ജനറൽ സെക്രട്ടറി (റിട്ട. ഡിഐജി പ്രിസൺ)', img: bPradeep },
+  { name: 'ബി. പ്രദീപ്', role: 'ജനറൽ സെക്രട്ടറി', subRole: 'റിട്ട. ഡി.ഐ.ജി. പ്രിസൺസ്', img: bPradeep },
   { name: 'ജോൺ വർഗ്ഗീസ്', role: 'സംസ്ഥാന ട്രഷറർ', img: johnVarghese },
   { name: 'ഡോ. വിനോദ് ലാൽ', role: 'സംസ്ഥാന രക്ഷാധികാരി', img: drVinodLal },
   { name: 'കൊല്ലം സുകു', role: 'സംസ്ഥാന സെക്രട്ടറി', img: '/kollam_suku.jpg', phone: '9526775936' },
@@ -69,6 +71,9 @@ function MemberCard({ member }: { member: Member }) {
       <p className="text-xs text-secondary font-bold uppercase tracking-tight mt-1">
         {member.role}
       </p>
+      {member.subRole && (
+        <p className="text-[11px] text-gray-500 italic mt-0.5">{member.subRole}</p>
+      )}
       {member.phone && (
         <a
           href={`tel:+91${member.phone}`}

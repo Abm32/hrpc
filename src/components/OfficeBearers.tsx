@@ -21,7 +21,7 @@ interface Member {
 // State committee — photos imported from src/assets/members.
 const stateMembers: Member[] = [
   { name: 'ഡോ. ആയത്തിൽ അൻസാർ', role: 'സംസ്ഥാന പ്രസിഡന്റ്', img: drAyathilAnsar },
-  { name: 'ബി. പ്രദീപ്', role: 'ജനറൽ സെക്രട്ടറി', subRole: 'റിട്ട. ഡി.ഐ.ജി. പ്രിസൺസ്', img: bPradeep },
+  { name: 'ബി. പ്രദീപ്', role: 'ജനറൽ സെക്രട്ടറി', subRole: 'റിട്ട. ഡി.ഐ.ജി. പ്രിസൺ', img: bPradeep },
   { name: 'ജോൺ വർഗ്ഗീസ്', role: 'സംസ്ഥാന ട്രഷറർ', img: johnVarghese },
   { name: 'ഡോ. വിനോദ് ലാൽ', role: 'സംസ്ഥാന രക്ഷാധികാരി', img: drVinodLal },
   { name: 'കൊല്ലം സുകു', role: 'സംസ്ഥാന സെക്രട്ടറി', img: '/kollam_suku.jpg', phone: '9526775936' },

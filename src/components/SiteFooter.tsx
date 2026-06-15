@@ -38,7 +38,7 @@ export default function SiteFooter() {
               <Facebook size={14} />
             </a>
             <a
-              href="#"
+              href="mailto:hrpckerala1995@gmail.com"
               className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
               aria-label="Email"
             >
@@ -77,9 +77,18 @@ export default function SiteFooter() {
           </address>
           <div className="mt-6 p-4 bg-white/5 rounded border border-white/10">
             <p className="text-[10px] text-secondary font-bold uppercase">{t('footer.secretaryLabel')}</p>
-            <p className="text-lg font-bold mt-1 text-white flex items-center gap-2">
-              <Phone size={16} /> +91 9526775936
-            </p>
+            <a
+              href="tel:+919388085000"
+              className="text-lg font-bold mt-1 text-white flex items-center gap-2 hover:text-secondary transition-colors"
+            >
+              <Phone size={16} className="shrink-0" /> +91 9388085000
+            </a>
+            <a
+              href="mailto:hrpckerala1995@gmail.com"
+              className="text-sm mt-3 text-gray-300 flex items-center gap-2 hover:text-white transition-colors break-all"
+            >
+              <AtSign size={15} className="shrink-0" /> hrpckerala1995@gmail.com
+            </a>
           </div>
         </div>
       </div>

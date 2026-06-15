@@ -154,7 +154,8 @@ export const translations = {
     addressLine1: { ml: 'രജിസ്റ്റർഡ് ഓഫീസ്: കൊല്ലം ജില്ല,', en: 'Registered Office: Kollam District,' },
     addressLine2: { ml: 'കേരള സംസ്ഥാനം, ഇന്ത്യ.', en: 'Kerala State, India.' },
     addressLine3: { ml: 'രജി. നമ്പർ: Q. 966/2001', en: 'Reg. No: Q. 966/2001' },
-    secretaryLabel: { ml: 'സംസ്ഥാന സെക്രട്ടറി', en: 'State Secretary' },
+    secretaryLabel: { ml: 'സംസ്ഥാന പ്രസിഡന്റ്', en: 'State President' },
+    emailLabel: { ml: 'ഇമെയിൽ', en: 'Email' },
     copyright: {
       ml: '© 2024 കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി (HRPS). രജി. നമ്പർ Q. 966/2001. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.',
       en: '© 2024 Kerala Human Rights Protection Society (HRPS). Reg. No. Q. 966/2001. All rights reserved.',

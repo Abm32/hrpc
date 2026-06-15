@@ -7,7 +7,7 @@ import HeroSection from './components/HeroSection';
 import NewsSection from './components/NewsSection';
 // import ServicesSection from './components/ServicesSection'; // Hidden for now
 import OfficeBearers from './components/OfficeBearers';
-import FilingGuide from './components/FilingGuide';
+// import FilingGuide from './components/FilingGuide'; // Hidden for now
 import SiteFooter from './components/SiteFooter';
 
 function AppContent() {
@@ -22,7 +22,7 @@ function AppContent() {
         <NewsSection />
         {/* <ServicesSection /> */}
         <OfficeBearers />
-        <FilingGuide />
+        {/* <FilingGuide /> */}
       </main>
       <SiteFooter />
 

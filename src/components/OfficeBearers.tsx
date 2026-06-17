@@ -29,14 +29,7 @@ const stateMembers: Member[] = [
 
 // District committee — photos served from public/ (referenced by root path).
 const districtMembers: Member[] = [
-  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
-  { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
-  {
-    name: 'ഷീല ഹരിദാസ്',
-    role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
-    img: '/sheela_haridas.jpg',
-    phone: '8848041003',
-  },
+  // Kollam
   {
     name: 'പ്രതീഷ് എസ്. ശശിധരൻ',
     role: 'കൊല്ലം ജില്ലാ പ്രസിഡന്റ്',
@@ -44,16 +37,28 @@ const districtMembers: Member[] = [
     phone: '9847711333',
   },
   {
+    name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
+    role: 'കൊല്ലം ജില്ലാ ജനറൽ സെക്രട്ടറി',
+    img: '/Alexander_Sebastian.jpg',
+  },
+  // Alappuzha
+  {
     name: 'പി. കെ. സുജിത്ത്',
     role: 'ആലപ്പുഴ ജില്ലാ പ്രസിഡന്റ്',
     img: '/P_K_SUJITH.jpg',
     phone: '9995542506',
   },
+  // Thrissur
+  { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
   {
-    name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
-    role: 'കൊല്ലം ജില്ലാ സെക്രട്ടറി',
-    img: '/Alexander_Sebastian.jpg',
+    name: 'ഷീല ഹരിദാസ്',
+    role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
+    img: '/sheela_haridas.jpg',
+    phone: '8848041003',
   },
+  // Wayanad
+  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
+  // Kozhikode
   {
     name: 'മഹേഷ് പി. എം.',
     role: 'കോഴിക്കോട് ജില്ലാ പ്രസിഡന്റ്',

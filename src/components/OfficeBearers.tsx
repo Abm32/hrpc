@@ -108,12 +108,12 @@ export default function OfficeBearers() {
           <p className="text-gray-500">{t('members.subheading')}</p>
         </div>
 
-        {/* State committee. Flex-wrap keeps any member count centred and balanced
-            (3, 5, 7...) instead of leaving gaps in a fixed grid as more are added. */}
+        {/* State committee. Width is capped so the row holds 3 cards, pushing the
+            remaining members (e.g. Vinod Lal, Kollam Suku) onto the next row. */}
         <h3 className="text-center font-headline text-lg sm:text-xl text-secondary font-bold mb-6 sm:mb-8">
           {t('members.committeeState')}
         </h3>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8 sm:max-w-[52rem] mx-auto">
           {stateMembers.map((member) => (
             <MemberCard key={member.name} member={member} />
           ))}

@@ -27,44 +27,52 @@ const stateMembers: Member[] = [
   { name: 'കൊല്ലം സുകു', role: 'സംസ്ഥാന സെക്രട്ടറി', img: '/kollam_suku.jpg', phone: '9526775936' },
 ];
 
-// District committee — photos served from public/ (referenced by root path).
-const districtMembers: Member[] = [
-  // Kollam
-  {
-    name: 'പ്രതീഷ് എസ്. ശശിധരൻ',
-    role: 'കൊല്ലം ജില്ലാ പ്രസിഡന്റ്',
-    img: '/pratheesh_s_sasidharan.jpg',
-    phone: '9847711333',
-  },
-  {
-    name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
-    role: 'കൊല്ലം ജില്ലാ ജനറൽ സെക്രട്ടറി',
-    img: '/Alexander_Sebastian.jpg',
-  },
-  // Alappuzha
-  {
-    name: 'പി. കെ. സുജിത്ത്',
-    role: 'ആലപ്പുഴ ജില്ലാ പ്രസിഡന്റ്',
-    img: '/P_K_SUJITH.jpg',
-    phone: '9995542506',
-  },
-  // Thrissur
-  { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
-  {
-    name: 'ഷീല ഹരിദാസ്',
-    role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
-    img: '/sheela_haridas.jpg',
-    phone: '8848041003',
-  },
-  // Wayanad
-  { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
-  // Kozhikode
-  {
-    name: 'മഹേഷ് പി. എം.',
-    role: 'കോഴിക്കോട് ജില്ലാ പ്രസിഡന്റ്',
-    img: '/mahesh_p_m.jpg',
-    phone: '9846750700',
-  },
+// District committee — grouped so each district renders on its own row.
+// Photos served from public/ (referenced by root path).
+const districtGroups: Member[][] = [
+  // Row 1 — Kollam
+  [
+    {
+      name: 'പ്രതീഷ് എസ്. ശശിധരൻ',
+      role: 'കൊല്ലം ജില്ലാ പ്രസിഡന്റ്',
+      img: '/pratheesh_s_sasidharan.jpg',
+      phone: '9847711333',
+    },
+    {
+      name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
+      role: 'കൊല്ലം ജില്ലാ ജനറൽ സെക്രട്ടറി',
+      img: '/Alexander_Sebastian.jpg',
+    },
+  ],
+  // Row 2 — Alappuzha
+  [
+    {
+      name: 'പി. കെ. സുജിത്ത്',
+      role: 'ആലപ്പുഴ ജില്ലാ പ്രസിഡന്റ്',
+      img: '/P_K_SUJITH.jpg',
+      phone: '9995542506',
+    },
+  ],
+  // Row 3 — Thrissur
+  [
+    { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
+    {
+      name: 'ഷീല ഹരിദാസ്',
+      role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
+      img: '/sheela_haridas.jpg',
+      phone: '8848041003',
+    },
+  ],
+  // Row 4 — Wayanad & Kozhikode
+  [
+    { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
+    {
+      name: 'മഹേഷ് പി. എം.',
+      role: 'കോഴിക്കോട് ജില്ലാ പ്രസിഡന്റ്',
+      img: '/mahesh_p_m.jpg',
+      phone: '9846750700',
+    },
+  ],
 ];
 
 function MemberCard({ member }: { member: Member }) {
@@ -119,13 +127,17 @@ export default function OfficeBearers() {
           ))}
         </div>
 
-        {/* District committee. */}
+        {/* District committee — each district group is its own centered row. */}
         <h3 className="text-center font-headline text-lg sm:text-xl text-secondary font-bold mt-12 sm:mt-16 mb-6 sm:mb-8">
           {t('members.committeeDistrict')}
         </h3>
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
-          {districtMembers.map((member) => (
-            <MemberCard key={member.name} member={member} />
+        <div className="flex flex-col gap-6 sm:gap-8">
+          {districtGroups.map((group, i) => (
+            <div key={i} className="flex flex-wrap justify-center gap-4 sm:gap-8">
+              {group.map((member) => (
+                <MemberCard key={member.name} member={member} />
+              ))}
+            </div>
           ))}
         </div>
       </div>

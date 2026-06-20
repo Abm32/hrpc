@@ -42,6 +42,7 @@ const districtGroups: Member[][] = [
       name: 'അലക്സാണ്ടർ സെബാസ്റ്റ്യൻ',
       role: 'കൊല്ലം ജില്ലാ ജനറൽ സെക്രട്ടറി',
       img: '/Alexander_Sebastian.jpg',
+      phone: '8301946671',
     },
   ],
   // Row 2 — Alappuzha
@@ -55,7 +56,7 @@ const districtGroups: Member[][] = [
   ],
   // Row 3 — Thrissur
   [
-    { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg' },
+    { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg', phone: '9037111711' },
     {
       name: 'ഷീല ഹരിദാസ്',
       role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
@@ -144,3 +145,4 @@ export default function OfficeBearers() {
     </section>
   );
 }
+

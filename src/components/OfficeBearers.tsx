@@ -16,6 +16,8 @@ interface Member {
   phone?: string;
   /** Tailwind object-position class to keep the face centred (default: object-top). */
   objectPosition?: string;
+  /** Extra Tailwind classes on the <img>, e.g. a scale utility to zoom in. */
+  imgClass?: string;
 }
 
 // State committee — photos imported from src/assets/members.
@@ -56,12 +58,13 @@ const districtGroups: Member[][] = [
   ],
   // Row 3 — Thrissur
   [
-    { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg', phone: '9037111711' },
+    { name: 'സജീവൻ നടത്തറ', role: 'തൃശൂർ ജില്ലാ പ്രസിഡന്റ്', img: '/sajeevan_nadathara.jpg', phone: '9037111711', imgClass: 'scale-110' },
     {
       name: 'ഷീല ഹരിദാസ്',
       role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
-      img: '/sheela_haridas.jpg',
+      img: '/sheela_haridas.png',
       phone: '8848041003',
+      imgClass: '-translate-x-2',
     },
   ],
   // Row 4 — Wayanad & Kozhikode
@@ -84,7 +87,7 @@ function MemberCard({ member }: { member: Member }) {
           src={member.img}
           alt={member.name}
           loading="lazy"
-          className={`w-full h-full object-cover ${member.objectPosition ?? 'object-top'}`}
+          className={`w-full h-full object-cover ${member.objectPosition ?? 'object-top'} ${member.imgClass ?? ''}`}
         />
       </div>
       <h4 className="font-bold text-base sm:text-lg text-primary">{member.name}</h4>

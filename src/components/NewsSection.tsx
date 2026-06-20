@@ -15,6 +15,19 @@ import { useState } from 'react';
 import { useLang } from '../i18n/LanguageContext';
 import bloodCamp1 from '../assets/bloodcamp/photo_2026-06-13_23-19-29.jpg';
 import bloodCamp2 from '../assets/bloodcamp/photo_2026-06-13_23-19-41.jpg';
+import hrpcEvent from '../assets/hrpc_event.jpg';
+
+// A single news article. Content stays in Malayalam (not translated), matching
+// the existing editorial convention for local event reports.
+interface Article {
+  id: string;
+  image: string;
+  imageAlt: string;
+  date: string;
+  title: string;
+  /** First paragraph shows collapsed; the rest reveal on "read full". */
+  paragraphs: string[];
+}
 
 // Full blood-donation camp report (Malayalam content — kept as-is, not translated).
 const BLOOD_CAMP_PARAGRAPHS = [
@@ -28,9 +41,34 @@ const BLOOD_CAMP_PARAGRAPHS = [
   '"രക്തദാനം മഹാദാനം, നിങ്ങളുടെ ഒരു യൂണിറ്റ് രക്തം മറ്റൊരാളുടെ ജീവിത പ്രതീക്ഷയാണ്" എന്ന സന്ദേശം ഉയർത്തിപ്പിടിച്ചുകൊണ്ടാണ് ക്യാമ്പ് സമാപിച്ചത്.',
 ];
 
+// Articles rendered in the main feature column, newest first.
+const ARTICLES: Article[] = [
+  {
+    id: 'minister-meeting',
+    image: hrpcEvent,
+    imageAlt: 'കേരള ആഭ്യന്തര മന്ത്രിയുമായുള്ള കൂടിക്കാഴ്ച',
+    date: 'ജൂൺ 20, 2025',
+    title:
+      'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി സംസ്ഥാന എക്സിക്യൂട്ടീവ് അംഗവും കേരളത്തിന്റെ ആഭ്യന്തര മന്ത്രിയുമായുള്ള കൂടിക്കാഴ്ച',
+    paragraphs: [
+      'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതിയുടെ സംസ്ഥാന എക്സിക്യൂട്ടീവ് അംഗവും കേരളത്തിന്റെ ആഭ്യന്തര മന്ത്രിയുമായി നടന്ന കൂടിക്കാഴ്ച ശ്രദ്ധേയമായി. സംസ്ഥാനത്തെ മനുഷ്യാവകാശ സംരക്ഷണ പ്രവർത്തനങ്ങളും പൊതുജന പരാതി പരിഹാരവും സംബന്ധിച്ച വിഷയങ്ങൾ കൂടിക്കാഴ്ചയിൽ ചർച്ച ചെയ്തു.',
+    ],
+  },
+  {
+    id: 'blood-camp',
+    image: bloodCamp1,
+    imageAlt: 'ലോക രക്തദാന ദിന ക്യാമ്പ്',
+    date: 'ജൂൺ 14, 2025',
+    title:
+      '🩸 ലോക രക്തദാന ദിനാചരണത്തിന്റെ ഭാഗമായി വിപുലമായ രക്തദാന ക്യാമ്പ്; നിരവധി പേർ ജീവൻദാനത്തിന് കൈകോർത്തു 🩸',
+    paragraphs: BLOOD_CAMP_PARAGRAPHS,
+  },
+];
+
 export default function NewsSection() {
   const { t } = useLang();
-  const [expanded, setExpanded] = useState(false);
+  // Track which article is expanded, keyed by article id.
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
     <section className="py-10 sm:py-14 lg:py-16 bg-surface-container/30">
@@ -46,61 +84,74 @@ export default function NewsSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {/* Main Feature Article */}
-          <div className="lg:col-span-2 bg-white rounded gov-shadow overflow-hidden border border-outline-variant flex flex-col">
-            <img
-              src={bloodCamp1}
-              alt="ലോക രക്തദാന ദിന ക്യാമ്പ്"
-              className="w-full h-48 sm:h-64 object-cover"
-            />
-            <div className="p-5 sm:p-8 flex flex-col flex-1">
-              <div className="flex items-center flex-wrap gap-2 mb-4">
-                <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
-                  {t('news.badge')}
-                </span>
-                <span className="text-sm text-gray-400 flex items-center gap-1">
-                  <Calendar size={14} /> ജൂൺ 14, 2025
-                </span>
-              </div>
-              <h3 className="font-headline text-xl sm:text-2xl text-primary mb-4 leading-snug">
-                🩸 ലോക രക്തദാന ദിനാചരണത്തിന്റെ ഭാഗമായി വിപുലമായ രക്തദാന ക്യാമ്പ്;
-                നിരവധി പേർ ജീവൻദാനത്തിന് കൈകോർത്തു 🩸
-              </h3>
+          {/* Main Feature Column — one card per article */}
+          <div className="lg:col-span-2 flex flex-col gap-6 lg:gap-8">
+            {ARTICLES.map((article) => {
+              const expanded = expandedId === article.id;
+              const visibleParagraphs = expanded
+                ? article.paragraphs
+                : article.paragraphs.slice(0, 1);
 
-              <div className="text-gray-600 leading-relaxed flex-1 space-y-4">
-                {/* Show all paragraphs when expanded, otherwise just the first. */}
-                {(expanded ? BLOOD_CAMP_PARAGRAPHS : BLOOD_CAMP_PARAGRAPHS.slice(0, 1)).map(
-                  (para, i) => (
-                    <p key={i}>{para}</p>
-                  ),
-                )}
-
-                {/* Second photo shown only in the expanded view. */}
-                {expanded && (
+              return (
+                <div
+                  key={article.id}
+                  className="bg-white rounded gov-shadow overflow-hidden border border-outline-variant flex flex-col"
+                >
                   <img
-                    src={bloodCamp2}
-                    alt="രക്തദാന ക്യാമ്പ്, ചടങ്ങ്"
-                    className="w-full rounded border border-outline-variant mt-2"
+                    src={article.image}
+                    alt={article.imageAlt}
+                    className="w-full h-48 sm:h-64 object-cover"
                   />
-                )}
-              </div>
+                  <div className="p-5 sm:p-8 flex flex-col flex-1">
+                    <div className="flex items-center flex-wrap gap-2 mb-4">
+                      <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        {t('news.badge')}
+                      </span>
+                      <span className="text-sm text-gray-400 flex items-center gap-1">
+                        <Calendar size={14} /> {article.date}
+                      </span>
+                    </div>
+                    <h3 className="font-headline text-xl sm:text-2xl text-primary mb-4 leading-snug">
+                      {article.title}
+                    </h3>
 
-              <button
-                onClick={() => setExpanded((v) => !v)}
-                aria-expanded={expanded}
-                className="self-start mt-6 inline-flex items-center gap-1 text-primary font-bold hover:gap-2 transition-all"
-              >
-                {expanded ? (
-                  <>
-                    {t('news.showLess')} <ChevronUp size={18} />
-                  </>
-                ) : (
-                  <>
-                    {t('news.readFull')} <ArrowRight size={18} />
-                  </>
-                )}
-              </button>
-            </div>
+                    <div className="text-gray-600 leading-relaxed flex-1 space-y-4">
+                      {visibleParagraphs.map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+
+                      {/* Blood-camp's second photo shows only in the expanded view. */}
+                      {expanded && article.id === 'blood-camp' && (
+                        <img
+                          src={bloodCamp2}
+                          alt="രക്തദാന ക്യാമ്പ്, ചടങ്ങ്"
+                          className="w-full rounded border border-outline-variant mt-2"
+                        />
+                      )}
+                    </div>
+
+                    {/* Only show the toggle when there's more than one paragraph. */}
+                    {article.paragraphs.length > 1 && (
+                      <button
+                        onClick={() => setExpandedId(expanded ? null : article.id)}
+                        aria-expanded={expanded}
+                        className="self-start mt-6 inline-flex items-center gap-1 text-primary font-bold hover:gap-2 transition-all"
+                      >
+                        {expanded ? (
+                          <>
+                            {t('news.showLess')} <ChevronUp size={18} />
+                          </>
+                        ) : (
+                          <>
+                            {t('news.readFull')} <ArrowRight size={18} />
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Side Panel */}

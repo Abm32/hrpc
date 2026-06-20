@@ -65,7 +65,7 @@ const districtGroups: Member[][] = [
   ],
   // Row 4 — Wayanad & Kozhikode
   [
-    { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg' },
+    { name: 'ഇല്ലത്തു കോയ', role: 'വയനാട് ജില്ലാ പ്രസിഡന്റ്', img: '/illathu_koya.jpg', phone: '9744540414' },
     {
       name: 'മഹേഷ് പി. എം.',
       role: 'കോഴിക്കോട് ജില്ലാ പ്രസിഡന്റ്',

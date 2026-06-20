@@ -72,6 +72,7 @@ export const translations = {
     showLess: { ml: 'ചുരുക്കുക', en: 'Show less' },
     upcomingEvents: { ml: 'വരാനിരിക്കുന്ന പരിപാടികൾ', en: 'Upcoming Events' },
     otherReports: { ml: 'മറ്റ് റിപ്പോർട്ടുകൾ', en: 'Other Reports' },
+    watchVideo: { ml: 'വീഡിയോ കാണുക', en: 'Watch video' },
     helplineTitle: { ml: 'എമർജൻസി ഹെൽപ്പ് ലൈൻ', en: 'Emergency Helpline' },
     helplineDesc: {
       ml: 'അടിയന്തര മനുഷ്യാവകാശ ലംഘനങ്ങൾ റിപ്പോർട്ട് ചെയ്യാൻ വിളിക്കുക.',

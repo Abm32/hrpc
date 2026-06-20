@@ -9,12 +9,15 @@ import {
   MapPin,
   ArrowRight,
   ChevronUp,
+  Youtube,
 } from 'lucide-react';
 import { useState } from 'react';
 
 import { useLang } from '../i18n/LanguageContext';
 import bloodCamp1 from '../assets/bloodcamp/photo_2026-06-13_23-19-29.jpg';
 import bloodCamp2 from '../assets/bloodcamp/photo_2026-06-13_23-19-41.jpg';
+import env1 from '../assets/env1.jpg';
+import env2 from '../assets/env2.jpg';
 import hrpcEvent from '../assets/hrpc_event.jpg';
 
 // A single news article. Content stays in Malayalam (not translated), matching
@@ -27,6 +30,11 @@ interface Article {
   title: string;
   /** First paragraph shows collapsed; the rest reveal on "read full". */
   paragraphs: string[];
+  /** Optional second photo shown only in the expanded view. */
+  secondImage?: string;
+  secondImageAlt?: string;
+  /** Optional YouTube (or other) video link shown in the expanded view. */
+  videoUrl?: string;
 }
 
 // Full blood-donation camp report (Malayalam content — kept as-is, not translated).
@@ -63,16 +71,29 @@ const ARTICLES: Article[] = [
     title:
       '🩸 ലോക രക്തദാന ദിനാചരണത്തിന്റെ ഭാഗമായി വിപുലമായ രക്തദാന ക്യാമ്പ്; നിരവധി പേർ ജീവൻദാനത്തിന് കൈകോർത്തു 🩸',
     paragraphs: BLOOD_CAMP_PARAGRAPHS,
+    secondImage: bloodCamp2,
+    secondImageAlt: 'രക്തദാന ക്യാമ്പ്, ചടങ്ങ്',
   },
   {
     id: 'env-seminar',
-    image: bloodCamp2,
-    imageAlt: 'പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം',
-    date: 'ഓഗസ്റ്റ് 02, 2025',
-    title: 'പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം',
+    image: env1,
+    imageAlt: 'ലോക പരിസ്ഥിതി ദിനാചരണം - ചാത്തന്നൂർ ശ്രീനാരായണ കോളേജ്',
+    date: 'ജൂൺ 05, 2025',
+    title:
+      'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതിയുടെ നേതൃത്വത്തിൽ ലോക പരിസ്ഥിതി ദിനാചരണം ചാത്തന്നൂർ ശ്രീനാരായണ കോളേജിൽ സംഘടിപ്പിച്ചു',
     paragraphs: [
-      'തിരുവനന്തപുരത്ത് സംഘടിപ്പിച്ച പരിസ്ഥിതി സെമിനാർ വിജയകരമായി പൂർത്തിയായി. പ്രകൃതി വിഭവ സംരക്ഷണവും പരിസ്ഥിതി അവബോധവും സംബന്ധിച്ച വിഷയങ്ങൾ സെമിനാറിൽ ചർച്ച ചെയ്തു.',
+      'ലോക പരിസ്ഥിതി ദിനത്തോടനുബന്ധിച്ച് കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതിയുടെ നേതൃത്വത്തിലും ചാത്തന്നൂർ ശ്രീനാരായണ കോളേജ് എൻ.സി.സി, എൻ.എസ്.എസ് യൂണിറ്റുകളുടെ സംയുക്താഭിമുഖ്യത്തിലും വിദ്യാർത്ഥികൾക്കായി ജൈവ പച്ചക്കറി തൈ വിതരണവും പരിസ്ഥിതി ബോധവൽക്കരണ പരിപാടിയും സംഘടിപ്പിച്ചു.',
+      'പരിസ്ഥിതി സംരക്ഷണത്തിന്റെ പ്രാധാന്യം ഓർമ്മപ്പെടുത്തുന്നതിനായി എല്ലാ വർഷവും ജൂൺ 5-ന് ലോക പരിസ്ഥിതി ദിനം ആചരിക്കുന്നു. പ്രകൃതിയെ സംരക്ഷിക്കുക, മരങ്ങൾ നട്ടുപിടിപ്പിക്കുക, പ്ലാസ്റ്റിക് ഉപയോഗം കുറയ്ക്കുക, ജലസ്രോതസ്സുകൾ സംരക്ഷിക്കുക തുടങ്ങിയ പ്രവർത്തനങ്ങളിലൂടെ പരിസ്ഥിതി സംരക്ഷണത്തിൽ ഓരോരുത്തരും പങ്കാളികളാകണമെന്ന് ഈ ദിനം ആഹ്വാനം ചെയ്യുന്നു.',
+      '"ഇന്നത്തെ നമ്മുടെ പ്രവർത്തനങ്ങളാണ് നാളത്തെ ഭൂമിയുടെ ഭാവി നിർണയിക്കുന്നത്" എന്ന സന്ദേശം ഉയർത്തിപ്പിടിച്ച് സംഘടിപ്പിച്ച പരിപാടിയിൽ സമിതി സംസ്ഥാന പ്രസിഡന്റ് ഡോ. അയത്തിൽ അൻസർ ജൈവ പച്ചക്കറി തൈകളുടെ വിതരണോദ്ഘാടനം നിർവഹിച്ചു. സമിതി സംസ്ഥാന ചീഫ് മീഡിയ കോർഡിനേറ്റർ ഷിബു റാവുത്തർ അധ്യക്ഷത വഹിച്ചു.',
+      'എൻ.സി.സി പ്രോഗ്രാം ഓഫീസർ ഡോ. ശില്പ ശശാങ്കൻ പരിസ്ഥിതി പ്രതിജ്ഞ ചൊല്ലിക്കൊടുത്തു. കോളേജ് പ്രിൻസിപ്പൽ ഡോ. ഹരിലക്ഷ്മി വി.എസ്., എൻ.എസ്.എസ് പ്രോഗ്രാം ഓഫീസർമാരായ ഡോ. നിഷ സോമരാജൻ, ഡോ. സ്മിത പ്രകാശ്, സമിതി സംസ്ഥാന വനിതാ വിംഗ് ജനറൽ സെക്രട്ടറി സുനിത നിസാർ, കൊല്ലം ജില്ലാ സെക്രട്ടറി മുഹമ്മദ് സുഹൈൽ, സുഭാഷ് മുഖത്തല എന്നിവർ സംസാരിച്ചു.',
+      '"ഒരു വിദ്യാർത്ഥി - ഒരു തൈ" എന്ന സന്ദേശം ഉയർത്തിപ്പിടിച്ച് സംഘടിപ്പിച്ച പരിപാടി വിദ്യാർത്ഥികളിൽ പരിസ്ഥിതി അവബോധം വളർത്തുന്നതിനും പ്രകൃതി സംരക്ഷണ പ്രവർത്തനങ്ങളിൽ സജീവ പങ്കാളിത്തം ഉറപ്പാക്കുന്നതിനും സഹായകമായി. തൈകൾ നട്ടാൽ മാത്രം പോരാ, അവ സംരക്ഷിച്ച് വളർത്തുന്നതും ഓരോരുത്തരുടെയും ഉത്തരവാദിത്തമാണെന്ന് ചടങ്ങിൽ ഡോ. അയത്തിൽ അൻസർ അഭിപ്രായപ്പെട്ടു.',
+      '"ഇന്ന് നട്ട ഒരു തൈ നാളെയുടെ ജീവവായുവാണ്" എന്ന സന്ദേശത്തോടെ വിദ്യാർത്ഥികൾ പരിസ്ഥിതി സംരക്ഷണ പ്രതിജ്ഞ ഏറ്റെടുത്തു. ഹരിതഭാവിക്കായി പ്രവർത്തിക്കുമെന്ന ഉറപ്പും അവർ നൽകി.',
+      'ചടങ്ങിൽ സമിതിയുടെ സംസ്ഥാന, ജില്ലാ ഭാരവാഹികൾ, അധ്യാപകർ, വിദ്യാർത്ഥികൾ എന്നിവർ ഉൾപ്പെടെ നിരവധി പേർ പങ്കെടുത്തു. കോളേജ് ക്യാമ്പസിൽ നട്ടുപിടിപ്പിക്കുന്നതിനായി ഹൈബ്രിഡ് ഇനത്തിലുള്ള ഫലവൃക്ഷ തൈകളും വിതരണം ചെയ്തു.',
+      '"ഭൂമിയെ സംരക്ഷിക്കാം... ഹരിത നാളേക്കായി കൈകോർക്കാം" എന്ന സന്ദേശത്തോടെയാണ് പരിപാടി സമാപിച്ചത്.',
     ],
+    secondImage: env2,
+    secondImageAlt: 'ലോക പരിസ്ഥിതി ദിനാചരണം - തൈ വിതരണം',
+    videoUrl: 'https://youtu.be/0ZuRuDRqWoA',
   },
 ];
 
@@ -135,13 +156,25 @@ export default function NewsSection() {
                   <p key={i}>{para}</p>
                 ))}
 
-                {/* Blood-camp's second photo shows only in the expanded view. */}
-                {expanded && activeArticle.id === 'blood-camp' && (
+                {/* Optional second photo shows only in the expanded view. */}
+                {expanded && activeArticle.secondImage && (
                   <img
-                    src={bloodCamp2}
-                    alt="രക്തദാന ക്യാമ്പ്, ചടങ്ങ്"
+                    src={activeArticle.secondImage}
+                    alt={activeArticle.secondImageAlt ?? activeArticle.imageAlt}
                     className="w-full rounded border border-outline-variant mt-2"
                   />
+                )}
+
+                {/* Optional video link shows only in the expanded view. */}
+                {expanded && activeArticle.videoUrl && (
+                  <a
+                    href={activeArticle.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-2 text-secondary font-bold hover:underline"
+                  >
+                    <Youtube size={20} /> {t('news.watchVideo')}
+                  </a>
                 )}
               </div>
 

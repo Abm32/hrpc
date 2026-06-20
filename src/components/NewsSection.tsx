@@ -41,7 +41,8 @@ const BLOOD_CAMP_PARAGRAPHS = [
   '"രക്തദാനം മഹാദാനം, നിങ്ങളുടെ ഒരു യൂണിറ്റ് രക്തം മറ്റൊരാളുടെ ജീവിത പ്രതീക്ഷയാണ്" എന്ന സന്ദേശം ഉയർത്തിപ്പിടിച്ചുകൊണ്ടാണ് ക്യാമ്പ് സമാപിച്ചത്.',
 ];
 
-// Articles rendered in the main feature column, newest first.
+// Articles available to feature. The first is shown by default; the rest appear
+// as clickable items in the side panel and can be promoted to the main feature.
 const ARTICLES: Article[] = [
   {
     id: 'minister-meeting',
@@ -63,12 +64,37 @@ const ARTICLES: Article[] = [
       '🩸 ലോക രക്തദാന ദിനാചരണത്തിന്റെ ഭാഗമായി വിപുലമായ രക്തദാന ക്യാമ്പ്; നിരവധി പേർ ജീവൻദാനത്തിന് കൈകോർത്തു 🩸',
     paragraphs: BLOOD_CAMP_PARAGRAPHS,
   },
+  {
+    id: 'env-seminar',
+    image: bloodCamp2,
+    imageAlt: 'പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം',
+    date: 'ഓഗസ്റ്റ് 02, 2025',
+    title: 'പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം',
+    paragraphs: [
+      'തിരുവനന്തപുരത്ത് സംഘടിപ്പിക്കുന്ന പരിസ്ഥിതി സെമിനാർ ഓഗസ്റ്റ് 02-ന് ഉച്ചയ്ക്ക് 2 മണിക്ക് ആരംഭിക്കും. പ്രകൃതി വിഭവ സംരക്ഷണവും പരിസ്ഥിതി അവബോധവും സംബന്ധിച്ച വിഷയങ്ങൾ സെമിനാറിൽ ചർച്ച ചെയ്യും.',
+    ],
+  },
 ];
 
 export default function NewsSection() {
   const { t } = useLang();
-  // Track which article is expanded, keyed by article id.
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  // Which article is shown as the main feature (defaults to the first/newest).
+  const [activeId, setActiveId] = useState<string>(ARTICLES[0].id);
+  // Whether the main feature is expanded to show all paragraphs.
+  const [expanded, setExpanded] = useState(false);
+
+  const activeArticle = ARTICLES.find((a) => a.id === activeId) ?? ARTICLES[0];
+  const otherArticles = ARTICLES.filter((a) => a.id !== activeId);
+
+  const visibleParagraphs = expanded
+    ? activeArticle.paragraphs
+    : activeArticle.paragraphs.slice(0, 1);
+
+  // When the user picks a different article, show it collapsed from the top.
+  function selectArticle(id: string) {
+    setActiveId(id);
+    setExpanded(false);
+  }
 
   return (
     <section className="py-10 sm:py-14 lg:py-16 bg-surface-container/30">
@@ -84,100 +110,91 @@ export default function NewsSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {/* Main Feature Column — one card per article */}
-          <div className="lg:col-span-2 flex flex-col gap-6 lg:gap-8">
-            {ARTICLES.map((article) => {
-              const expanded = expandedId === article.id;
-              const visibleParagraphs = expanded
-                ? article.paragraphs
-                : article.paragraphs.slice(0, 1);
+          {/* Main Feature — the single active article */}
+          <div className="lg:col-span-2 bg-white rounded gov-shadow overflow-hidden border border-outline-variant flex flex-col">
+            <img
+              src={activeArticle.image}
+              alt={activeArticle.imageAlt}
+              className="w-full h-48 sm:h-64 object-cover"
+            />
+            <div className="p-5 sm:p-8 flex flex-col flex-1">
+              <div className="flex items-center flex-wrap gap-2 mb-4">
+                <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
+                  {t('news.badge')}
+                </span>
+                <span className="text-sm text-gray-400 flex items-center gap-1">
+                  <Calendar size={14} /> {activeArticle.date}
+                </span>
+              </div>
+              <h3 className="font-headline text-xl sm:text-2xl text-primary mb-4 leading-snug">
+                {activeArticle.title}
+              </h3>
 
-              return (
-                <div
-                  key={article.id}
-                  className="bg-white rounded gov-shadow overflow-hidden border border-outline-variant flex flex-col"
-                >
+              <div className="text-gray-600 leading-relaxed flex-1 space-y-4">
+                {visibleParagraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+
+                {/* Blood-camp's second photo shows only in the expanded view. */}
+                {expanded && activeArticle.id === 'blood-camp' && (
                   <img
-                    src={article.image}
-                    alt={article.imageAlt}
-                    className="w-full h-48 sm:h-64 object-cover"
+                    src={bloodCamp2}
+                    alt="രക്തദാന ക്യാമ്പ്, ചടങ്ങ്"
+                    className="w-full rounded border border-outline-variant mt-2"
                   />
-                  <div className="p-5 sm:p-8 flex flex-col flex-1">
-                    <div className="flex items-center flex-wrap gap-2 mb-4">
-                      <span className="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase">
-                        {t('news.badge')}
-                      </span>
-                      <span className="text-sm text-gray-400 flex items-center gap-1">
-                        <Calendar size={14} /> {article.date}
-                      </span>
-                    </div>
-                    <h3 className="font-headline text-xl sm:text-2xl text-primary mb-4 leading-snug">
-                      {article.title}
-                    </h3>
+                )}
+              </div>
 
-                    <div className="text-gray-600 leading-relaxed flex-1 space-y-4">
-                      {visibleParagraphs.map((para, i) => (
-                        <p key={i}>{para}</p>
-                      ))}
-
-                      {/* Blood-camp's second photo shows only in the expanded view. */}
-                      {expanded && article.id === 'blood-camp' && (
-                        <img
-                          src={bloodCamp2}
-                          alt="രക്തദാന ക്യാമ്പ്, ചടങ്ങ്"
-                          className="w-full rounded border border-outline-variant mt-2"
-                        />
-                      )}
-                    </div>
-
-                    {/* Only show the toggle when there's more than one paragraph. */}
-                    {article.paragraphs.length > 1 && (
-                      <button
-                        onClick={() => setExpandedId(expanded ? null : article.id)}
-                        aria-expanded={expanded}
-                        className="self-start mt-6 inline-flex items-center gap-1 text-primary font-bold hover:gap-2 transition-all"
-                      >
-                        {expanded ? (
-                          <>
-                            {t('news.showLess')} <ChevronUp size={18} />
-                          </>
-                        ) : (
-                          <>
-                            {t('news.readFull')} <ArrowRight size={18} />
-                          </>
-                        )}
-                      </button>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+              {/* Only show the toggle when there's more than one paragraph. */}
+              {activeArticle.paragraphs.length > 1 && (
+                <button
+                  onClick={() => setExpanded((v) => !v)}
+                  aria-expanded={expanded}
+                  className="self-start mt-6 inline-flex items-center gap-1 text-primary font-bold hover:gap-2 transition-all"
+                >
+                  {expanded ? (
+                    <>
+                      {t('news.showLess')} <ChevronUp size={18} />
+                    </>
+                  ) : (
+                    <>
+                      {t('news.readFull')} <ArrowRight size={18} />
+                    </>
+                  )}
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Side Panel */}
           <div className="flex flex-col gap-6">
-            {/* Upcoming Events */}
+            {/* Other Reports — clickable; selecting one features it on the left */}
             <div className="bg-white p-6 rounded border-l-4 border-primary gov-shadow border border-outline-variant">
-              <h4 className="font-bold text-primary mb-3 flex items-center gap-2">
+              <h4 className="font-bold text-primary mb-4 flex items-center gap-2">
                 <CalendarDays size={16} /> {t('news.upcomingEvents')}
               </h4>
-              <div className="space-y-4">
-                <div className="border-l-2 border-primary/30 pl-3">
-                  <p className="font-semibold text-sm">
-                    സൗജന്യ നിയമ സഹായ ക്യാമ്പ് - കൊല്ലം
-                  </p>
-                  <p className="text-[12px] text-gray-400 mt-1">
-                    ജൂലൈ 15, രാവിലെ 10 മണി മുതൽ
-                  </p>
-                </div>
-                <div className="border-l-2 border-primary/30 pl-3">
-                  <p className="font-semibold text-sm">
-                    പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം
-                  </p>
-                  <p className="text-[12px] text-gray-400 mt-1">
-                    ഓഗസ്റ്റ് 02, ഉച്ചയ്ക്ക് 2 മണിക്ക്
-                  </p>
-                </div>
+              <div className="space-y-3">
+                {otherArticles.map((article) => (
+                  <button
+                    key={article.id}
+                    onClick={() => selectArticle(article.id)}
+                    className="w-full text-left flex gap-3 items-start group rounded p-1 -m-1 hover:bg-surface-container/60 transition-colors"
+                  >
+                    <img
+                      src={article.image}
+                      alt={article.imageAlt}
+                      className="w-16 h-16 rounded object-cover shrink-0 border border-outline-variant"
+                    />
+                    <div className="min-w-0">
+                      <p className="font-semibold text-sm leading-snug text-on-surface group-hover:text-primary transition-colors line-clamp-2">
+                        {article.title}
+                      </p>
+                      <p className="text-[12px] text-gray-400 mt-1 flex items-center gap-1">
+                        <Calendar size={12} /> {article.date}
+                      </p>
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
 

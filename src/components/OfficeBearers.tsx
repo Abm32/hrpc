@@ -64,7 +64,7 @@ const districtGroups: Member[][] = [
       role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
       img: '/sheela_haridas.png',
       phone: '8848041003',
-      imgClass: '-translate-x-2',
+      imgClass: 'translate-x-3',
     },
   ],
   // Row 4 — Wayanad & Kozhikode

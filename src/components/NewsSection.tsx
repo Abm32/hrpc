@@ -1,7 +1,7 @@
 import {
   LayoutGrid,
   Calendar,
-  CalendarDays,
+  Newspaper,
   AlertCircle,
   Phone,
   FileText,
@@ -71,7 +71,7 @@ const ARTICLES: Article[] = [
     date: 'ഓഗസ്റ്റ് 02, 2025',
     title: 'പരിസ്ഥിതി സെമിനാർ - തിരുവനന്തപുരം',
     paragraphs: [
-      'തിരുവനന്തപുരത്ത് സംഘടിപ്പിക്കുന്ന പരിസ്ഥിതി സെമിനാർ ഓഗസ്റ്റ് 02-ന് ഉച്ചയ്ക്ക് 2 മണിക്ക് ആരംഭിക്കും. പ്രകൃതി വിഭവ സംരക്ഷണവും പരിസ്ഥിതി അവബോധവും സംബന്ധിച്ച വിഷയങ്ങൾ സെമിനാറിൽ ചർച്ച ചെയ്യും.',
+      'തിരുവനന്തപുരത്ത് സംഘടിപ്പിച്ച പരിസ്ഥിതി സെമിനാർ വിജയകരമായി പൂർത്തിയായി. പ്രകൃതി വിഭവ സംരക്ഷണവും പരിസ്ഥിതി അവബോധവും സംബന്ധിച്ച വിഷയങ്ങൾ സെമിനാറിൽ ചർച്ച ചെയ്തു.',
     ],
   },
 ];
@@ -171,7 +171,7 @@ export default function NewsSection() {
             {/* Other Reports — clickable; selecting one features it on the left */}
             <div className="bg-white p-6 rounded border-l-4 border-primary gov-shadow border border-outline-variant">
               <h4 className="font-bold text-primary mb-4 flex items-center gap-2">
-                <CalendarDays size={16} /> {t('news.upcomingEvents')}
+                <Newspaper size={16} /> {t('news.otherReports')}
               </h4>
               <div className="space-y-3">
                 {otherArticles.map((article) => (

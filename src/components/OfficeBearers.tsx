@@ -2,10 +2,10 @@ import { Phone } from 'lucide-react';
 
 import { useLang } from '../i18n/LanguageContext';
 
-import drAyathilAnsar from '../assets/members/dr_ayathil_ansar.jpg';
-import bPradeep from '../assets/members/b_pradeep.jpg';
+import drAyathilAnsar from '../assets/members/dr_ayathil_ansar.png';
+import bPradeep from '../assets/members/b_pradeep.png';
 import drVinodLal from '../assets/members/dr_vinod_lal.jpg';
-import johnVarghese from '../assets/members/john_varghese_puthenpura.jpg';
+import johnVarghese from '../assets/members/john_varghese_puthenpura.png';
 
 interface Member {
   name: string;
@@ -64,7 +64,7 @@ const districtGroups: Member[][] = [
       role: 'തൃശൂർ ജില്ലാ ജനറൽ സെക്രട്ടറി',
       img: '/sheela_haridas.png',
       phone: '8848041003',
-      imgClass: 'translate-x-3',
+      imgClass: 'translate-x-[2px]',
     },
   ],
   // Row 4 — Wayanad & Kozhikode

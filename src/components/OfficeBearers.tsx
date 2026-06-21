@@ -73,7 +73,7 @@ const districtGroups: Member[][] = [
     {
       name: 'മഹേഷ് പി. എം.',
       role: 'കോഴിക്കോട് ജില്ലാ പ്രസിഡന്റ്',
-      img: '/mahesh_p_m.jpg',
+      img: '/mahesh_p_m.png',
       phone: '9846750700',
     },
   ],

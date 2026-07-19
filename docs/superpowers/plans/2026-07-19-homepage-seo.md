@@ -29,6 +29,9 @@
 - Modify `src/i18n/translations.ts`: canonical organization name and homepage search copy.
 - Modify `src/components/NewsSection.tsx`: remove stale “Society” branding from English reports.
 - Modify `src/components/HeroSection.tsx`: improve the hero image alternative text.
+- Modify `src/components/SiteHeader.tsx`: use HRPC in the visible header brand.
+- Modify `src/components/SiteFooter.tsx`: use HRPC in the visible footer brand.
+- Modify `src/i18n/LanguageContext.tsx`: use the `hrpc-lang` preference key.
 - Modify `public/sitemap.xml`: canonical homepage and current modification date.
 - Verify `public/robots.txt`: canonical sitemap URL.
 
@@ -207,6 +210,9 @@ git commit -m "feat: strengthen homepage SEO metadata"
 - Modify: `src/i18n/translations.ts`
 - Modify: `src/components/NewsSection.tsx`
 - Modify: `src/components/HeroSection.tsx`
+- Modify: `src/components/SiteHeader.tsx`
+- Modify: `src/components/SiteFooter.tsx`
+- Modify: `src/i18n/LanguageContext.tsx`
 
 **Interfaces:**
 - Consumes: the naming invariants enforced by `npm run check:seo`.
@@ -288,6 +294,12 @@ members: {
 
 Replace every English occurrence of `Kerala Human Rights Protection Society` with `Human Rights Protection Council` and every standalone organizational use of `Society` with `Council` in `src/components/NewsSection.tsx`. Preserve the event facts and all Malayalam copy.
 
+Confirm the visible brand is `HRPC KERALA` in both `src/components/SiteHeader.tsx` and `src/components/SiteFooter.tsx`. Confirm `src/i18n/LanguageContext.tsx` uses:
+
+```ts
+const STORAGE_KEY = 'hrpc-lang';
+```
+
 - [ ] **Step 4: Improve the hero image alternative text**
 
 In `src/components/HeroSection.tsx`, change:
@@ -325,7 +337,7 @@ Expected: both commands exit 0 with no TypeScript or ESLint errors.
 - [ ] **Step 7: Commit the on-page SEO copy**
 
 ```bash
-git add scripts/check-seo.mjs src/i18n/translations.ts src/components/NewsSection.tsx src/components/HeroSection.tsx
+git add scripts/check-seo.mjs src/i18n/translations.ts src/i18n/LanguageContext.tsx src/components/NewsSection.tsx src/components/HeroSection.tsx src/components/SiteHeader.tsx src/components/SiteFooter.tsx
 git commit -m "fix: standardize HRPC homepage content"
 ```
 

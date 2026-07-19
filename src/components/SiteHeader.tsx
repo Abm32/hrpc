@@ -30,7 +30,7 @@ export default function SiteHeader() {
               {t('header.orgName')}
             </span>
             <span className="text-[11px] sm:text-xs lg:text-sm font-semibold text-secondary tracking-wider uppercase">
-              HRPS KERALA
+              HRPC KERALA
             </span>
             <span className="text-[9px] sm:text-[10px] text-gray-400 italic leading-tight">
               {t('header.regLine')}

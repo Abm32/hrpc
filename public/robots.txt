@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hrpc.vercel.app/sitemap.xml
+Sitemap: https://hrpckerala.com/sitemap.xml

@@ -24,7 +24,7 @@ export default function SiteFooter() {
               alt="Human Rights Protection Council of Kerala logo"
               className="h-12 w-auto object-contain bg-white rounded-full p-0.5"
             />
-            <span className="font-headline text-xl font-bold leading-tight">HRPS KERALA</span>
+            <span className="font-headline text-xl font-bold leading-tight">HRPC KERALA</span>
           </div>
           <p className="text-sm text-gray-400 mb-6 leading-relaxed">
             {t('footer.about')}

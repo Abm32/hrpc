@@ -144,8 +144,8 @@ export const translations = {
 
   footer: {
     about: {
-      ml: 'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി (HRPS) എല്ലാ പൗരന്മാരുടെയും അവകാശങ്ങൾ സംരക്ഷിക്കുന്നതിനും കേരളത്തിന്റെ പ്രകൃതി സമ്പത്ത് നിലനിർത്തുന്നതിനും പ്രതിജ്ഞാബദ്ധമാണ്.',
-      en: 'The Kerala Human Rights Protection Society (HRPS) is committed to protecting the rights of all citizens and preserving the natural wealth of Kerala.',
+      ml: 'കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി (HRPC) എല്ലാ പൗരന്മാരുടെയും അവകാശങ്ങൾ സംരക്ഷിക്കുന്നതിനും കേരളത്തിന്റെ പ്രകൃതി സമ്പത്ത് നിലനിർത്തുന്നതിനും പ്രതിജ്ഞാബദ്ധമാണ്.',
+      en: 'The Human Rights Protection Council of Kerala (HRPC) is committed to protecting the rights of all citizens and preserving the natural wealth of Kerala.',
     },
     linksTitle: { ml: 'ലിങ്കുകൾ', en: 'Links' },
     privacy: { ml: 'സ്വകാര്യതാ നയം', en: 'Privacy Policy' },
@@ -159,12 +159,12 @@ export const translations = {
     secretaryLabel: { ml: 'സംസ്ഥാന പ്രസിഡന്റ്', en: 'State President' },
     emailLabel: { ml: 'ഇമെയിൽ', en: 'Email' },
     copyright: {
-      ml: '© 2024 കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി (HRPS). രജി. നമ്പർ Q. 966/2001. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.',
-      en: '© 2024 Kerala Human Rights Protection Society (HRPS). Reg. No. Q. 966/2001. All rights reserved.',
+      ml: '© 2024 കേരള മനുഷ്യാവകാശ സംരക്ഷണ സമിതി (HRPC). രജി. നമ്പർ Q. 966/2001. എല്ലാ അവകാശങ്ങളും സംരക്ഷിതം.',
+      en: '© 2024 Human Rights Protection Council of Kerala (HRPC). Reg. No. Q. 966/2001. All rights reserved.',
     },
     managedBy: {
-      ml: 'Official Portal Content Managed by HRPS Kerala Secretariat.',
-      en: 'Official Portal Content Managed by HRPS Kerala Secretariat.',
+      ml: 'Official Portal Content Managed by HRPC Kerala Secretariat.',
+      en: 'Official Portal Content Managed by HRPC Kerala Secretariat.',
     },
   },
 

@@ -10,7 +10,7 @@ import {
 
 import { translations, type Lang, type TranslatedString } from './translations';
 
-const STORAGE_KEY = 'hrps-lang';
+const STORAGE_KEY = 'hrpc-lang';
 const DEFAULT_LANG: Lang = 'ml'; // Malayalam-first, by design.
 
 // Helper: resolve a dotted path like "hero.heading" against the translations tree.
